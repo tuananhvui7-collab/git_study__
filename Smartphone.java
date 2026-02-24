@@ -12,23 +12,30 @@ public class Smartphone{
         this.price = price;
         this.stockQuantity = stockQuantity;
     }
+    
+    public Smartphone(){}
 
     //getter setter
 
     public void setName(String name){
-        if (name != null){
+        if ((name != null) && (name != "")) {
             this.name = name;
         }
     }
     public void setID(String id){
-        if (name != null){
+        if (id != null){
             this.id = id;
         }
     }
     public void setPrice(double price){
-        if (price >0){
+        double old_price = this.getPrice();
+        if (price >= 0) {
             this.price = price;
+            // log phải ghi sau khi validate, phải ghi sau khi cập nhật, k dc ghi trước.
+            System.out.println("Giá đã  được cập nhật từ "+ old_price + " sang " +  this.getPrice());
+
         }
+        
     }
     public void setStockQuantity(int stockQuantity){
         if (stockQuantity > 0){
