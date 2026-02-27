@@ -2,11 +2,11 @@ public class Smartphone{
     // Khởi tạo biến: tuân thủ encapsulation
     private String id;
     private String name;
-    private double price;
+    private int price;
     private int stockQuantity;
 
     // Constructor
-    public Smartphone(String id, String name, double price, int stockQuantity){
+    public Smartphone(String id, String name, int price, int stockQuantity){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -27,7 +27,7 @@ public class Smartphone{
             this.id = id;
         }
     }
-    public void setPrice(double price){
+    public void setPrice(int price){
         double old_price = this.getPrice();
         if (price >= 0) {
             this.price = price;
@@ -38,7 +38,7 @@ public class Smartphone{
         
     }
     public void setStockQuantity(int stockQuantity){
-        if (stockQuantity > 0){
+        if (stockQuantity >= 0){ // kho phải lớn hơn hoặc bằng 0
             this.stockQuantity = stockQuantity;
         }
     }
@@ -55,6 +55,25 @@ public class Smartphone{
     public int stockQuantity(){
         return stockQuantity;
     }
+    // Ham check kho
+    public boolean checkInventory(int quantity){
+        if (stockQuantity < quantity){
+            System.out.println("Kho hết hàng hoặc không đủ số lượng cần mua. ");
+            return false;
+        }
+        return true;
+        
+    }
+    // Ham tu dong tru kho
+
+    public void reduceStock(int quantity){
+
+        stockQuantity = stockQuantity - quantity;
+        System.out.println("Cập nhật giá stockQuantity: " + stockQuantity);
+        
+
+    }
+    
 
 }
 
